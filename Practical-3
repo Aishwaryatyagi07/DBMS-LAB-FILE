@@ -1,0 +1,48 @@
+-- Step 1: Create Student table
+CREATE TABLE Student (
+    Roll_No INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Department VARCHAR(50)
+);
+
+-- Step 2: Alter table to add Phone_Number column
+ALTER TABLE Student
+ADD Phone_Number VARCHAR(50);
+
+-- Step 3: SQLite does not support MODIFY, so recreate table with Name as VARCHAR(100)
+-- Rename existing table
+ALTER TABLE Student RENAME TO Student_old;
+
+-- Create new table with Name as VARCHAR(100)
+CREATE TABLE Student (
+    Roll_No INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Department VARCHAR(50),
+    Phone_Number VARCHAR(50)
+);
+
+-- Copy data from old table (if any)
+INSERT INTO Student (Roll_No, Name, Department, Phone_Number)
+SELECT Roll_No, Name, Department, Phone_Number FROM Student_old;
+
+-- Drop old table
+DROP TABLE Student_old;
+
+-- Step 4: Insert data
+INSERT INTO Student VALUES (1, 'Adit', 'CSE', '9876543210');
+INSERT INTO Student VALUES (2, 'Riya', 'ECE', '9876543211');
+INSERT INTO Student VALUES (3, 'Kunal', 'CIVIL', '9876543212');
+INSERT INTO Student VALUES (4, 'Sneha', 'MECH', '9876543213');
+INSERT INTO Student VALUES (5, 'Simran', 'CSE', '9876543214');
+
+-- Step 5: Update CSE to AIML
+UPDATE Student
+SET Department = 'AIML'
+WHERE Department = 'CSE';
+
+-- Step 6: Delete rows where Department is 'MECH'
+DELETE FROM Student
+WHERE Department = 'MECH';
+
+-- Step 7: Drop the table
+DROP TABLE Student;
