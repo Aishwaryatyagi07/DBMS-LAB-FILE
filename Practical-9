@@ -1,0 +1,50 @@
+- 1. Create table Customer
+CREATE TABLE Customer (
+    Cid NUMBER,
+    Cname VARCHAR(50),
+    Country VARCHAR(50)
+);
+
+-- 2. Insert records based on your requirement
+-- 3 from India, 4 from Japan, 2 from USA, 2 from UK
+INSERT INTO Customer VALUES (101, 'Adit', 'India');
+INSERT INTO Customer VALUES (102, 'Yashi', 'India');
+INSERT INTO Customer VALUES (103, 'Aishwarya', 'India');
+
+INSERT INTO Customer VALUES (104, 'Ronit', 'Japan');
+INSERT INTO Customer VALUES (105, 'Veer', 'Japan');
+INSERT INTO Customer VALUES (106, 'Arjun', 'Japan');
+INSERT INTO Customer VALUES (107, 'Kiara', 'Japan');
+
+INSERT INTO Customer VALUES (108, 'Riya', 'USA');
+INSERT INTO Customer VALUES (109, 'Kabir', 'USA');
+
+INSERT INTO Customer VALUES (110, 'Anaya', 'UK');
+INSERT INTO Customer VALUES (111, 'Mihir', 'UK');
+
+-- 1. Select count of customers grouped by country
+SELECT COUNT(Cid) AS Total_Customers, Country
+FROM Customer
+GROUP BY Country;
+
+-- 2. Group by country and only show groups with more than 2 customers
+SELECT Country, COUNT(Cid) AS Total_Customers
+FROM Customer
+GROUP BY Country
+HAVING COUNT(Cid) > 2;
+
+-- 3. Order by Cid in ascending order
+SELECT Cid, Cname FROM Customer ORDER BY Cid ASC;
+
+-- 4. Order by Cid in descending order
+SELECT Cid, Cname FROM Customer ORDER BY Cid DESC;
+
+-- 5. Order by Cid ASC, then Cname DESC
+SELECT Cid, Cname FROM Customer ORDER BY Cid ASC, Cname DESC;
+
+-- 6. Create a view named cust_view
+CREATE VIEW cust_view AS
+SELECT * FROM Customer;
+
+-- 7. Drop the view
+DROP VIEW cust_view;
