@@ -1,0 +1,33 @@
+-- 1. Create the students table
+CREATE TABLE students (
+    roll_number INT,
+    name VARCHAR(50),
+    subject VARCHAR(50),
+    marks INT
+);
+
+-- 2. Insert student data
+INSERT INTO students (roll_number, name, subject, marks)
+VALUES 
+(1, 'Aarav', 'Mathematics', 76),
+(2, 'Anika', 'Science', 88),
+(4, 'Ishita', 'English', 95),
+(5, 'Kavya', 'English', 80),
+(6, 'Ishan', 'Mathematics', 96),
+(8, 'Sanjana', 'Science', 90),
+(10, 'Yash', 'Science', 85);
+
+-- 3. Calculate and display the total number of students in each subject
+SELECT subject, COUNT(*) AS total_students
+FROM students
+WHERE subject IN ('Mathematics', 'Science', 'English')
+GROUP BY subject;
+
+-- 4. Mathematical function: Get average marks in each subject
+SELECT subject, AVG(marks) AS average_marks
+FROM students
+GROUP BY subject;
+
+-- 5. Character function: Convert student names to uppercase
+SELECT UPPER(name) AS upper_name, subject, marks
+FROM students;
