@@ -1,0 +1,39 @@
+
+-- Create the Student table
+CREATE TABLE Student (
+    Roll_No INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Dept VARCHAR(50)
+);
+
+-- Insert 20 sample records (only Adit remains on Roll_No 1)
+INSERT INTO Student VALUES (1, 'Adit', 'Computer Science');
+INSERT INTO Student VALUES (2, 'Ritika', 'Mechanical');
+INSERT INTO Student VALUES (3, 'Manav', 'Electrical');
+INSERT INTO Student VALUES (4, 'Sneha', 'Civil');
+INSERT INTO Student VALUES (5, 'Aarav', 'Computer Science');
+INSERT INTO Student VALUES (6, 'Divya', 'Mechanical');
+INSERT INTO Student VALUES (7, 'Kabir', 'Electrical');
+INSERT INTO Student VALUES (8, 'Neha', 'Civil');
+INSERT INTO Student VALUES (9, 'Ishaan', 'Computer Science');
+INSERT INTO Student VALUES (10, 'Simran', 'Mechanical');
+INSERT INTO Student VALUES (11, 'Aryan', 'Electrical');
+INSERT INTO Student VALUES (12, 'Tanya', 'Civil');
+INSERT INTO Student VALUES (13, 'Vivaan', 'Computer Science');
+INSERT INTO Student VALUES (14, 'Nikita', 'Mechanical');
+INSERT INTO Student VALUES (15, 'Yash', 'Electrical');
+INSERT INTO Student VALUES (16, 'Anika', 'Civil');
+INSERT INTO Student VALUES (17, 'Krishna', 'Computer Science');
+INSERT INTO Student VALUES (18, 'Mehul', 'Mechanical');
+INSERT INTO Student VALUES (19, 'Pooja', 'Electrical');
+INSERT INTO Student VALUES (20, 'Siddhi', 'Civil');
+
+-- View all student records
+SELECT * FROM Student;
+
+-- Delete students with specific Roll_No values (1 is not deleted)
+DELETE FROM Student
+WHERE Roll_No IN (5, 10, 15, 20);
+
+-- View updated table after deletion
+SELECT * FROM Student;
